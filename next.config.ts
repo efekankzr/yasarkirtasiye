@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_API_URL: "https://api.yasarkirtasiye.com/api",
   },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "http",
