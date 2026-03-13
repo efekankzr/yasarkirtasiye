@@ -215,9 +215,18 @@ export default function ProductsPage() {
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
-      const validFiles = filesArray.filter(file => {
-        if (file.size > 2 * 1024 * 1024) {
-          toast.error(`${file.name} boyutu 2MB'dan büyük olamaz.`);
+      
+      const currentTotal = existingImages.length + newImages.length;
+      if (currentTotal + filesArray.length > 3) {
+        toast.error(`En fazla 3 adet görsel eklenebilir. Sadece ilk ${3 - currentTotal} görsel alınacak.`);
+      }
+
+      const availableSlots = Math.max(0, 3 - currentTotal);
+      const allowedFiles = filesArray.slice(0, availableSlots);
+
+      const validFiles = allowedFiles.filter(file => {
+        if (file.size > 3 * 1024 * 1024) {
+          toast.error(`${file.name} boyutu 3MB'dan büyük olamaz.`);
           return false;
         }
         return true;
@@ -551,7 +560,8 @@ export default function ProductsPage() {
               <ul className="text-[11px] text-zinc-500 list-disc pl-4 space-y-1">
                 <li>Tercihen kare (1:1) formatında görseller yükleyiniz.</li>
                 <li>Geçerli formatlar: <b>JPG, PNG, WEBP</b>.</li>
-                <li>Görsel başına maksimum boyut <b>2MB</b> olmalıdır.</li>
+                <li>Bir ürüne <b>en fazla 3 görsel</b> eklenebilir.</li>
+                <li>Görsel başına maksimum boyut <b>3MB</b> olmalıdır.</li>
               </ul>
             </div>
 
