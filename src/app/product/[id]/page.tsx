@@ -8,6 +8,7 @@ import { ArrowLeft, MapPin, Phone, Layers, Image as ImageIcon, ShoppingCart } fr
 import { useAuthStore } from "@/store/useAuthStore"
 import { useCartStore } from "@/store/useCartStore"
 import { apiClient } from "@/lib/api/axios"
+import { getImageUrl } from "@/lib/utils"
 import { PublicNavbar } from "@/components/layout/PublicNavbar"
 import { PublicFooter } from "@/components/layout/PublicFooter"
 import { Button } from "@/components/ui/button"
@@ -132,7 +133,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
               {/* Ana Görsel */}
               <div className="aspect-square bg-white rounded-2xl border border-zinc-200 flex items-center justify-center overflow-hidden p-0 shadow-sm relative">
                 {mainImageSrc ? (
-                  <Image src={mainImageSrc} alt={product.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                  <Image src={getImageUrl(mainImageSrc)} alt={product.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
                 ) : (
                   <div className="text-center text-zinc-400">
                     <Layers className="w-16 h-16 mx-auto mb-2 opacity-50" />
@@ -156,7 +157,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                       }`}
                     >
                       <div className="aspect-square bg-white rounded-lg border overflow-hidden relative">
-                        <Image src={img.imagePath} alt="Thumbnail" fill sizes="10vw" className="object-cover rounded-md" />
+                        <Image src={getImageUrl(img.imagePath)} alt="Thumbnail" fill sizes="10vw" className="object-cover rounded-md" />
                       </div>
                     </button>
                   ))}

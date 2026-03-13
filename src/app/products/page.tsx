@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { apiClient } from "@/lib/api/axios";
+import { getImageUrl } from "@/lib/utils";
 import { PublicNavbar } from "@/components/layout/PublicNavbar";
 import { PublicFooter } from "@/components/layout/PublicFooter";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -383,7 +384,7 @@ function ProductsContent() {
                   <div className="aspect-square w-full bg-zinc-100 flex items-center justify-center relative overflow-hidden shrink-0">
                     {mainImage ? (
                       <Image
-                        src={mainImage.imagePath}
+                        src={getImageUrl(mainImage.imagePath)}
                         alt={p.name}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"

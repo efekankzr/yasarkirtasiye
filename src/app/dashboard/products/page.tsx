@@ -25,6 +25,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Modal } from "@/components/ui/modal";
+import { getImageUrl } from "@/lib/utils";
 
 // Typings
 interface Category {
@@ -437,7 +438,7 @@ export default function ProductsPage() {
                         <td className="px-6 py-4">
                           {mainImage ? (
                             <img
-                              src={mainImage.imagePath}
+                              src={getImageUrl(mainImage.imagePath)}
                               alt={product.name}
                               className="w-12 h-12 object-cover rounded-md border"
                             />
@@ -578,7 +579,7 @@ export default function ProductsPage() {
                       className="relative group shrink-0 bg-white dark:bg-zinc-950 p-1 rounded-md border shadow-sm"
                     >
                       <img
-                        src={img.imagePath}
+                        src={getImageUrl(img.imagePath)}
                         alt="Product"
                         className="w-20 h-20 object-cover rounded"
                       />

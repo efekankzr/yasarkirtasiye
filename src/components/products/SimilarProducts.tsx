@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Layers } from "lucide-react";
 import { apiClient } from "@/lib/api/axios";
+import { getImageUrl } from "@/lib/utils";
 
 interface ProductImage {
   id: string;
@@ -81,7 +82,7 @@ export function SimilarProducts({ productId, categoryId }: SimilarProductsProps)
                 <div className="aspect-square bg-zinc-100 dark:bg-zinc-800/50 flex items-center justify-center relative overflow-hidden shrink-0">
                   {mainImage ? (
                     <Image
-                      src={mainImage.imagePath}
+                      src={getImageUrl(mainImage.imagePath)}
                       alt={p.name}
                       fill
                       sizes="(max-width: 640px) 100vw, 25vw"

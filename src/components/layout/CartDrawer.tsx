@@ -7,6 +7,7 @@ import { apiClient } from "@/lib/api/axios"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { X, ShoppingCart, Trash2, Plus, Minus, Layers, ExternalLink } from "lucide-react"
+import { getImageUrl } from "@/lib/utils"
 
 export function CartDrawer() {
   const { items, isCartOpen, setCartOpen, removeItem, updateQuantity, clearCart } = useCartStore()
@@ -111,7 +112,7 @@ export function CartDrawer() {
                 <div key={item.productId} className="flex gap-4 p-3 border border-zinc-200 dark:border-zinc-800 rounded-xl bg-zinc-50 dark:bg-zinc-900/50 relative group">
                    <div className="w-16 h-16 shrink-0 bg-white dark:bg-zinc-900 rounded-lg flex items-center justify-center border border-zinc-200 dark:border-zinc-800 overflow-hidden">
                      {item.imageUrl ? (
-                       <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
+                       <img src={getImageUrl(item.imageUrl)} alt={item.name} className="w-full h-full object-cover" />
                      ) : (
                        <Layers className="w-6 h-6 text-zinc-300" />
                      )}

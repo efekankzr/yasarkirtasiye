@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Modal } from "@/components/ui/modal"
+import { getImageUrl } from "@/lib/utils"
 
 // Typings
 export interface Brand {
@@ -246,7 +247,7 @@ export default function BrandsPage() {
                     <tr key={brand.id} className="border-b last:border-0 hover:bg-zinc-50/50 dark:hover:bg-zinc-900/30 transition-colors">
                       <td className="px-6 py-4">
                         {brand.imageUrl ? (
-                           <img src={brand.imageUrl} alt={brand.name} className="w-10 h-10 object-contain rounded border" />
+                           <img src={getImageUrl(brand.imageUrl)} alt={brand.name} className="w-10 h-10 object-contain rounded border" />
                         ) : (
                            <div className="w-10 h-10 bg-zinc-100 rounded border flex items-center justify-center">
                               <ImageIcon className="w-4 h-4 text-zinc-400" />
@@ -330,9 +331,9 @@ export default function BrandsPage() {
             <div className="flex items-center gap-4">
               {imagePreview && (
                 <div className="relative inline-block group">
-                  <img 
-                    src={imagePreview} 
-                    alt="Brand Preview" 
+                    <img 
+                      src={getImageUrl(imagePreview)} 
+                      alt="Brand Preview" 
                     className="w-16 h-16 object-contain bg-zinc-50 border rounded-md" 
                   />
                   <button 

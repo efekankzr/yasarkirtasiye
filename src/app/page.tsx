@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { apiClient } from "@/lib/api/axios";
+import { getImageUrl } from "@/lib/utils";
 import { PublicNavbar } from "@/components/layout/PublicNavbar";
 import { PublicFooter } from "@/components/layout/PublicFooter";
 import {
@@ -111,7 +111,7 @@ function ProductSlider({
               <div className="aspect-square w-full bg-zinc-100 flex items-center justify-center relative overflow-hidden shrink-0">
                 {mainImage ? (
                   <Image
-                    src={mainImage.imagePath}
+                    src={getImageUrl(mainImage.imagePath)}
                     alt={p.name}
                     fill
                     sizes="(max-width: 640px) 260px, 280px"
@@ -314,7 +314,7 @@ export default function Home() {
                       <Image
                         width={100}
                         height={64}
-                        src={b.imageUrl}
+                        src={getImageUrl(b.imageUrl)}
                         alt={b.name}
                         className="max-h-16 w-auto max-w-full object-contain filter group-hover:scale-110 transition-transform duration-300"
                       />
