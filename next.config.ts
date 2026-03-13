@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
         hostname: "yasarkirtasiye.com",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "api.yasarkirtasiye.com",
+        pathname: "/uploads/**",
+      },
     ],
     // Yerel public/uploads görselleri için unoptimized false tutulur
     // Next.js kendi public klasöründen serve edilen görselleri optimize eder
